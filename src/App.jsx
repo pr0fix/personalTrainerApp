@@ -1,12 +1,18 @@
 import { Link, Outlet } from "react-router-dom";
-import { Button } from "@mui/material";
+import { AppBar, Button, Typography } from "@mui/material";
 
 export default function App() {
 
 
   return (
     <>
-      <nav>
+      <AppBar style={{textAlign:"center"}} position="static">
+        <Typography variant="h6">
+          Personal trainer app
+        </Typography>
+      </AppBar>
+
+      <nav style={{ padding: "10px", display: "flex", justifyContent:"center" }}>
         <Link to={"/"}>
           <Button variant="outlined" >Home</Button>
         </Link>
