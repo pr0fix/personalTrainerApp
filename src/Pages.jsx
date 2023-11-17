@@ -1,6 +1,6 @@
-import Customerpage from "./components/Customer";
+import Customerpage from "./components/Customerlist";
 import Homepage from "./components/Home";
-import Trainingpage from "./components/Training";
+import Trainingpage from "./components/Traininglist";
 import Error from "./components/Error";
 
 

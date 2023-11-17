@@ -6,22 +6,22 @@ export default function App() {
 
   return (
     <>
-    <nav>
+      <nav>
         <Link to={"/"}>
-			<Button>Home</Button>
-		</Link>
+          <Button variant="outlined" >Home</Button>
+        </Link>
 
-		<Link to="/customer">
-			<Button>Customer</Button>
-		</Link>
+        <Link to="/customer">
+          <Button variant="outlined" >Customers</Button>
+        </Link>
 
-		<Link to="/training">
-			<Button>Training</Button>
-		</Link>
+        <Link to="/training">
+          <Button variant="outlined" >Trainings</Button>
+        </Link>
 
 
-    </nav>
-      <Outlet/>
+      </nav>
+      <Outlet />
     </>
   )
 }
