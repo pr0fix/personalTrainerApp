@@ -1,30 +1,37 @@
-import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions} from "@mui/material";
+import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@mui/material";
 import { useState } from "react";
 
 export default function AddCustomer(props) {
+
+    // States
     const [customer, setCustomer] = useState({ firstname: '', lastname: '', streetaddress: '', postcode: '', city: '', email: '', phone: '' });
     const [showDialog, setShowDialog] = useState(false);
 
+    // Closes add-form
     const handleCloseDialog = (_, reason) => {
         if (reason != 'backdropClick') {
             setShowDialog(false);
         }
     }
 
+    // Shows add-form
     const handleShowDialog = () => {
         setShowDialog(true);
     }
 
+    // Saves adding a new customer
     const handleSave = () => {
         props.addCustomer(customer);
         setShowDialog(false);
     }
 
+    // Receives data from input fields and saves each input to correct properties in state
     const handleInputChange = (event) => {
         setCustomer({ ...customer, [event.target.name]: event.target.value });
     }
 
 
+    // Return
     return (
         <>
             <Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} variant="outlined" onClick={handleShowDialog}>Add customer</Button>

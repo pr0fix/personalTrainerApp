@@ -9,15 +9,19 @@ import EditCustomer from './EditCustomer'
 
 
 export default function Customerpage() {
+    //URL for API calls
     const REST_URL = 'https://traineeapp.azurewebsites.net/api';
 
+    // States
     const [customers, setCustomers] = useState([]);
     const [open, setOpen] = useState(false);
     const [msg, setMsg] = useState("");
 
+
+    // GET-request to receive all customers
     const getCustomers = async () => {
         try {
-            const response = await axios.get(`${REST_URL}/customers`)
+            const response = await axios.get(`${REST_URL}/customers`);
             const resData = response.data.content;
             setCustomers(resData);
         }
@@ -27,6 +31,7 @@ export default function Customerpage() {
     }
 
 
+    // POST-request to add a new customer
     const addCustomer = async (customer) => {
         try {
             const res = await axios.post(`${REST_URL}/customers`, customer, {
@@ -45,6 +50,7 @@ export default function Customerpage() {
 
     }
 
+    // DELETE-request to delete a customer 
     const deleteCustomer = async (params) => {
         try {
             if (window.confirm("Are you sure?")) {
@@ -61,6 +67,7 @@ export default function Customerpage() {
 
     }
 
+    // PUT-request to edit an existing customer
     const updateCustomer = async (customer, link) => {
         try {
             if (window.confirm("Are you sure?")) {
@@ -78,18 +85,21 @@ export default function Customerpage() {
         }
     }
 
+    //useEffect
 
     useEffect(() => {
         getCustomers();
     }, [])
 
 
+    // Ag-grid column properties 
     const columnProperties = {
         sortable: true,
         filter: true,
         floatingFilter: true
     }
 
+    // Ag grid columns
     const columns = [
         { headerName: 'Firstname', field: 'firstname', ...columnProperties },
         { headerName: 'Lastname', field: 'lastname', ...columnProperties },
@@ -106,6 +116,8 @@ export default function Customerpage() {
                 <Button size="small" color="error" onClick={() => deleteCustomer(params)}>Delete</Button>
         }
     ]
+
+    // Return
     return (
         <>
             <div className="ag-theme-material" style={{ height: 650, width: 1800, margin: "auto" }}>

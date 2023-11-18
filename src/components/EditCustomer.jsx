@@ -2,30 +2,37 @@ import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } 
 import { useState } from "react";
 
 export default function AddCustomer(props) {
+
+    // States
     const [customer, setCustomer] = useState(props.customer);
     const [showDialog, setShowDialog] = useState(false);
 
+
+    // Closes edit-form
     const handleCloseDialog = (_, reason) => {
         if (reason != 'backdropClick') {
             setShowDialog(false);
         }
     }
 
+    // Shows edit-form
     const handleShowDialog = () => {
         setCustomer(props.customer);
         setShowDialog(true);
     }
 
+    // Saves editing a customer
     const handleSave = () => {
         props.updateCustomer(customer, props.customer.links[0].href);
         setShowDialog(false);
     }
 
+    // Receives data from input fields and saves each input to correct properties in state
     const handleInputChange = (event) => {
         setCustomer({ ...customer, [event.target.name]: event.target.value });
     }
 
-
+    // Return
     return (
         <>
             <Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} variant="outlined" onClick={handleShowDialog}>Edit</Button>

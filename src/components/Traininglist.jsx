@@ -3,42 +3,68 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-material.css'
+import AddTraining from "./AddTraining";
+import moment from "moment/moment";
 
 export default function Trainingpage() {
 
-	// REST Service API call url
-	const REST_URL = 'https://traineeapp.azurewebsites.net/api'
+	// URL for API calls
+	const REST_URL = 'https://traineeapp.azurewebsites.net'
 
 	// States
 	const [trainings, setTrainings] = useState([]);
 
-	useEffect(() => {
-		const listTrainings = async () => {
-		  try {
-			const response = await axios.get(`${REST_URL}/trainings`);
-			const trainingData = response.data.content;
-	
-			const promises = trainingData.map(async (training) => {
-			  try {
-				const customerRes = await axios.get(training.links.find(link => link.rel === 'customer').href);
-				const customer = customerRes.data;
-				return { ...training, customer };
-			  } catch (err) {
-				console.error('Error fetching customer data:', err);
-				return training;
-			  }
-			});
-	
-			const trainingsWithCustomers = await Promise.all(promises);
-			setTrainings(trainingsWithCustomers);
-		  } catch (error) {
-			console.error('Error fetching training data:', error);
-		  }
-		};
-	
-		listTrainings();
-	  }, []);
+	// GET-request to receive all trainings
+	const getTrainings = async () => {
+		try {
+			const res = await axios.get(`${REST_URL}/gettrainings`)
+			const resData = res.data;
+			setTrainings(resData)
+		}
+		catch (err) {
+			console.error(err);
+		}
 
+	};
+
+	// POST-request to add a new training
+	const addTraining = async (training, customerId) => {
+		try {
+			const ISODate = moment(training.date, "DD.MM.YYYY HH.mm.ss").toISOString();
+
+			const customerRefLink = `${REST_URL}/api/customers/${customerId}`;
+
+			const newTraining = {
+				date: ISODate,
+				duration: training.duration,
+				activity: training.activity,
+				customer: customerRefLink
+			};
+			console.log(newTraining)
+
+			const res = await axios.post(`${REST_URL}/api/trainings/`, newTraining, {
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+			setTrainings([...trainings, res.data]);
+			getTrainings()
+
+		}
+		catch (err) {
+			console.error(err);
+		}
+	}
+
+	// DELETE-request to delete a training
+
+	// useEffect
+	useEffect(() => {
+		getTrainings();
+	}, []);
+
+
+	// Properties for ag-grid columns
 	const columnProperties = {
 		sortable: true,
 		filter: true,
@@ -61,6 +87,7 @@ export default function Trainingpage() {
 
 	];
 
+	// Return
 	return (
 		<>
 			<div className="ag-theme-material" style={{ height: 700, width: 1000, margin: "auto" }}>
@@ -72,6 +99,9 @@ export default function Trainingpage() {
 
 				/>
 			</div>
+			<AddTraining
+				addTraining={addTraining}
+			/>
 		</>
 	);
 }
