@@ -16,6 +16,7 @@ export default function Customerpage() {
     const [customers, setCustomers] = useState([]);
     const [open, setOpen] = useState(false);
     const [msg, setMsg] = useState("");
+    const [gridApi, setGridApi] = useState(null);
 
 
     // GET-request to receive all customers
@@ -117,23 +118,43 @@ export default function Customerpage() {
         }
     ]
 
+    const onGridReady = params => {
+        setGridApi(params.api);
+    };
+
+    const onExportClick = () => {
+        if (gridApi) {
+            const columnsToExport = {
+                columnKeys: ["firstname", "lastname", "streetaddress", "postcode", "city", "email", "phone"],
+                skipColumnHeaders: true
+            };
+            gridApi.exportDataAsCsv(columnsToExport);
+        } else {
+            console.error('Grid API not available');
+        }
+    }
+
     // Return
     return (
         <>
-            <div className="ag-theme-material" style={{ height: 650, width: 1800, margin: "auto" }}>
-                <AgGridReact
-                    rowData={customers}
-                    columnDefs={columns}
-                    pagination={true}
-                    paginationPageSize={10}
-                />
+            <div>
+                <button onClick={onExportClick}>Export csv</button>
+                <div className="ag-theme-material" style={{ height: 650, width: 1800, margin: "auto" }}>
+                    <AgGridReact
+                        rowData={customers}
+                        columnDefs={columns}
+                        pagination={true}
+                        paginationPageSize={10}
+                        onGridReady={onGridReady}
+                    />
 
-                <Snackbar
-                    open={open}
-                    autoHideDuration={3000}
-                    onClose={() => setOpen(false)}
-                    message={msg}
-                ></Snackbar>
+                    <Snackbar
+                        open={open}
+                        autoHideDuration={3000}
+                        onClose={() => setOpen(false)}
+                        message={msg}
+                    ></Snackbar>
+                </div>
             </div>
             <AddCustomer
                 addCustomer={addCustomer} />
