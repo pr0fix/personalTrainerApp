@@ -5,6 +5,7 @@ import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-material.css'
 import AddTraining from "./AddTraining";
 import moment from "moment/moment";
+import { Button, Snackbar } from "@mui/material";
 
 export default function Trainingpage() {
 
@@ -13,6 +14,8 @@ export default function Trainingpage() {
 
 	// States
 	const [trainings, setTrainings] = useState([]);
+	const [open, setOpen] = useState(false);
+	const [msg, setMsg] = useState("");
 
 	// GET-request to receive all trainings
 	const getTrainings = async () => {
@@ -30,12 +33,12 @@ export default function Trainingpage() {
 	// POST-request to add a new training
 	const addTraining = async (training, customerId) => {
 		try {
-			const ISODate = moment(training.date, "DD.MM.YYYY HH.mm.ss").toISOString();
+			// const ISODate = moment().toISOString();
 
 			const customerRefLink = `${REST_URL}/api/customers/${customerId}`;
 
 			const newTraining = {
-				date: ISODate,
+				date: moment().toISOString(),
 				duration: training.duration,
 				activity: training.activity,
 				customer: customerRefLink
@@ -48,7 +51,9 @@ export default function Trainingpage() {
 				}
 			});
 			setTrainings([...trainings, res.data]);
-			getTrainings()
+			setOpen(true);
+			setMsg("Training added successfully!")
+			getTrainings();
 
 		}
 		catch (err) {
@@ -57,6 +62,22 @@ export default function Trainingpage() {
 	}
 
 	// DELETE-request to delete a training
+	const deleteTraining = async (params) => {
+		try {
+			if (window.confirm("Are you sure?")) {
+				const res = await axios.delete(`${REST_URL}/api/trainings/${params.data.id}`);
+				// console.log(params.data.id)
+				console.log("Training deleted successfully!", res.data);
+				setOpen(true);
+				setMsg("Training deleted successfully!");
+				getTrainings();
+			}
+		}
+		catch (err) {
+			console.error(err);
+		}
+	}
+
 
 	// useEffect
 	useEffect(() => {
@@ -83,14 +104,18 @@ export default function Trainingpage() {
 		{ headerName: 'Duration', field: 'duration', ...columnProperties },
 		{ headerName: 'Activity', field: 'activity', ...columnProperties },
 		{ headerName: 'Customer first name', field: 'customer.firstname', ...columnProperties },
-		{ headerName: 'Customer last name', field: 'customer.lastname', ...columnProperties }
+		{ headerName: 'Customer last name', field: 'customer.lastname', ...columnProperties },
+		{
+			cellRenderer: params =>
+				<Button size="small" color="error" onClick={() => deleteTraining(params)}>Delete</Button>
+		}
 
 	];
 
 	// Return
 	return (
 		<>
-			<div className="ag-theme-material" style={{ height: 700, width: 1000, margin: "auto" }}>
+			<div className="ag-theme-material" style={{ height: 700, width: 1200, margin: "auto" }}>
 				<AgGridReact
 					rowData={trainings}
 					columnDefs={columns}
@@ -98,6 +123,15 @@ export default function Trainingpage() {
 					paginationPageSize={10}
 
 				/>
+				<Snackbar
+					open={open}
+					autoHideDuration={3000}
+					onClose={() => setOpen(false)}
+					message={msg}
+				>
+
+
+				</Snackbar>
 			</div>
 			<AddTraining
 				addTraining={addTraining}

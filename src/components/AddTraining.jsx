@@ -22,7 +22,9 @@ export default function AddTraining(props) {
 
     // Saves adding a new training
     const handleSave = () => {
-        if (training.date && training.duration && training.activity && training.customerId) {
+        if (
+            // training.date && 
+            training.duration && training.activity && training.customerId) {
             props.addTraining(training, training.customerId);
             setShowDialog(false);
         } else {
@@ -47,14 +49,15 @@ export default function AddTraining(props) {
             >
                 <DialogTitle>New Training</DialogTitle>
                 <DialogContent>
-                    <TextField
+                    {/* <TextField
                         required
                         label="Date"
                         name="date"
                         value={training.date}
                         onChange={handleInputChange}
                         error={validationError && !training.date}
-                    />
+                    /> */}
+                    
                     <TextField
                         required
                         label="Duration"

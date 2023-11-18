@@ -55,7 +55,7 @@ export default function Customerpage() {
         try {
             if (window.confirm("Are you sure?")) {
                 const res = await axios.delete(params.data.links[1].href);
-                console.log("Deleting customer successful!", res.data)
+                console.log("Customer deleted successfully!", res.data)
                 setMsg("Customer deleted successfully!")
                 setOpen(true);
                 getCustomers();
