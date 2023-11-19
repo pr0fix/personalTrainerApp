@@ -6,13 +6,13 @@ export default function App() {
 
   return (
     <>
-      <AppBar style={{textAlign:"center"}} position="static">
+      <AppBar style={{ textAlign: "center" }} position="static">
         <Typography variant="h6">
           Personal trainer app
         </Typography>
       </AppBar>
 
-      <nav style={{ padding: "10px", display: "flex", justifyContent:"center" }}>
+      <nav style={{ padding: "10px", display: "flex", justifyContent: "center" }}>
         <Link to={"/"}>
           <Button variant="outlined" >Home</Button>
         </Link>
@@ -25,6 +25,9 @@ export default function App() {
           <Button variant="outlined" >Trainings</Button>
         </Link>
 
+        <Link to="/trainingcalendar">
+          <Button variant="outlined" >Calendar</Button>
+        </Link>
 
       </nav>
       <Outlet />

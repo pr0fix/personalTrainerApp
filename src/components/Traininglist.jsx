@@ -20,9 +20,9 @@ export default function Trainingpage() {
 	// GET-request to receive all trainings
 	const getTrainings = async () => {
 		try {
-			const res = await axios.get(`${REST_URL}/gettrainings`)
+			const res = await axios.get(`${REST_URL}/gettrainings`);
 			const resData = res.data;
-			setTrainings(resData)
+			setTrainings(resData);
 		}
 		catch (err) {
 			console.error(err);
@@ -35,16 +35,18 @@ export default function Trainingpage() {
 		try {
 			// const ISODate = moment().toISOString();
 
+			// Link to customer with customer ID defined in input field in AddTraining -component
 			const customerRefLink = `${REST_URL}/api/customers/${customerId}`;
 
+			// Making a new training object to be added to trainings
 			const newTraining = {
 				date: moment().toISOString(),
 				duration: training.duration,
 				activity: training.activity,
 				customer: customerRefLink
 			};
-			console.log(newTraining)
 
+			// POST-request to add the new training object to trainings API
 			const res = await axios.post(`${REST_URL}/api/trainings/`, newTraining, {
 				headers: {
 					'Content-Type': 'application/json'
@@ -79,7 +81,7 @@ export default function Trainingpage() {
 	}
 
 
-	// useEffect
+	// useEffect hook to fetch training data when the component mounts
 	useEffect(() => {
 		getTrainings();
 	}, []);
@@ -112,7 +114,7 @@ export default function Trainingpage() {
 
 	];
 
-	// Return
+	// Renders the Ag-grid component with training data
 	return (
 		<>
 			<div className="ag-theme-material" style={{ height: 700, width: 1200, margin: "auto" }}>

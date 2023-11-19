@@ -86,8 +86,7 @@ export default function Customerpage() {
         }
     }
 
-    //useEffect
-
+    //useEffect hook to fetch customer data when the component mounts
     useEffect(() => {
         getCustomers();
     }, [])
@@ -118,23 +117,33 @@ export default function Customerpage() {
         }
     ]
 
+    // onGridReady triggered when grid is ready to be interacted with
     const onGridReady = params => {
-        setGridApi(params.api);
+        // Set Grid API reference obtained from params object
+        setGridApi(params.api); 
     };
 
+    // Function triggered when export button is clicked on page
     const onExportClick = () => {
+        // Check if gridApi is ready to be interacted with
         if (gridApi) {
+
+            // Define which columns to export to CSV file (excluding headers and edit&delete buttons)
             const columnsToExport = {
                 columnKeys: ["firstname", "lastname", "streetaddress", "postcode", "city", "email", "phone"],
                 skipColumnHeaders: true
             };
+
+            // Export grid data as CSV with columns defined
             gridApi.exportDataAsCsv(columnsToExport);
+
+        // If gridApi is not ready to be interacted with, shows an error message in console
         } else {
             console.error('Grid API not available');
         }
     }
 
-    // Return
+    // Renders Ag-grid component for customerlist
     return (
         <>
             <div>

@@ -39,7 +39,7 @@ export default function AddTraining(props) {
     }
 
 
-    // Return
+    // Renders the components to add a new training
     return (
         <>
             <Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} variant="outlined" onClick={handleShowDialog}>Add training</Button>

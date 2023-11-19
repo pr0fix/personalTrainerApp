@@ -31,7 +31,7 @@ export default function AddCustomer(props) {
     }
 
 
-    // Return
+    // Renders the components to add a new customer
     return (
         <>
             <Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} variant="outlined" onClick={handleShowDialog}>Add customer</Button>

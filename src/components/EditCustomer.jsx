@@ -32,7 +32,7 @@ export default function AddCustomer(props) {
         setCustomer({ ...customer, [event.target.name]: event.target.value });
     }
 
-    // Return
+    // Renders the components to edit customer
     return (
         <>
             <Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} variant="outlined" onClick={handleShowDialog}>Edit</Button>
