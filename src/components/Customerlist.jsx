@@ -120,7 +120,7 @@ export default function Customerpage() {
     // onGridReady triggered when grid is ready to be interacted with
     const onGridReady = params => {
         // Set Grid API reference obtained from params object
-        setGridApi(params.api); 
+        setGridApi(params.api);
     };
 
     // Function triggered when export button is clicked on page
@@ -137,7 +137,7 @@ export default function Customerpage() {
             // Export grid data as CSV with columns defined
             gridApi.exportDataAsCsv(columnsToExport);
 
-        // If gridApi is not ready to be interacted with, shows an error message in console
+            // If gridApi is not ready to be interacted with, shows an error message in console
         } else {
             console.error('Grid API not available');
         }
@@ -147,7 +147,7 @@ export default function Customerpage() {
     return (
         <>
             <div>
-                <button onClick={onExportClick}>Export csv</button>
+
                 <div className="ag-theme-material" style={{ height: 650, width: 1800, margin: "auto" }}>
                     <AgGridReact
                         rowData={customers}
@@ -165,10 +165,13 @@ export default function Customerpage() {
                     ></Snackbar>
                 </div>
             </div>
-            <AddCustomer
-                addCustomer={addCustomer} />
-
-
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <AddCustomer
+                    addCustomer={addCustomer}
+                />
+                <Button style={{ margin: "5px" }} variant="contained" onClick={onExportClick}>export</Button>
+            </div>
         </>
+
     )
 }

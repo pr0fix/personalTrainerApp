@@ -12,7 +12,7 @@ export default function App() {
         </Typography>
       </AppBar>
 
-      <nav style={{ padding: "10px", display: "flex", justifyContent: "center" }}>
+      <nav style={{ padding: "10px", display: "flex", justifyContent: "center", gap: "5px" }}>
         <Link to={"/"}>
           <Button variant="outlined" >Home</Button>
         </Link>

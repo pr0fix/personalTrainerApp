@@ -17,7 +17,6 @@ export default function TrainingCalendar() {
             const res = await axios.get("https://traineeapp.azurewebsites.net/gettrainings");
             const resData = res.data;
             setTrainings(resData);
-            console.log(resData);
         }
         catch (err) {
             console.error(err);

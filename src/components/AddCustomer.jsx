@@ -24,7 +24,7 @@ export default function AddCustomer(props) {
     const handleSave = () => {
         // Define every field to be required before customer can be added
         const requiredFields = ['firstname', 'lastname', 'streetaddress', 'postcode', 'city', 'email', 'phone'];
-        
+
         // Check if every field is valid in new customer
         const isValid = requiredFields.every(field => customer[field]);
 
@@ -33,7 +33,7 @@ export default function AddCustomer(props) {
             props.addCustomer(customer);
             setShowDialog(false);
 
-        // Else set validationError to true
+            // Else set validationError to true
         } else {
             setValidationError(true);
         }
@@ -49,7 +49,7 @@ export default function AddCustomer(props) {
     // Renders the components to add a new customer
     return (
         <>
-            <Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} variant="outlined" onClick={handleShowDialog}>Add customer</Button>
+            <Button style={{ margin: "5px" }} variant="contained" onClick={handleShowDialog}>Add customer</Button>
             <Dialog
                 open={showDialog}
                 onClose={handleCloseDialog}
