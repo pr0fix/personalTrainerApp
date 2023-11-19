@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function AddCustomer(props) {
 
     // States
+    const [validationError, setValidationError] = useState(false);
     const [customer, setCustomer] = useState({ firstname: '', lastname: '', streetaddress: '', postcode: '', city: '', email: '', phone: '' });
     const [showDialog, setShowDialog] = useState(false);
 
@@ -21,13 +22,27 @@ export default function AddCustomer(props) {
 
     // Saves adding a new customer
     const handleSave = () => {
-        props.addCustomer(customer);
-        setShowDialog(false);
+        // Define every field to be required before customer can be added
+        const requiredFields = ['firstname', 'lastname', 'streetaddress', 'postcode', 'city', 'email', 'phone'];
+        
+        // Check if every field is valid in new customer
+        const isValid = requiredFields.every(field => customer[field]);
+
+        // If new customer has all the required fields add a new customer
+        if (isValid) {
+            props.addCustomer(customer);
+            setShowDialog(false);
+
+        // Else set validationError to true
+        } else {
+            setValidationError(true);
+        }
     }
 
     // Receives data from input fields and saves each input to correct properties in state
     const handleInputChange = (event) => {
         setCustomer({ ...customer, [event.target.name]: event.target.value });
+        setValidationError(false);
     }
 
 
@@ -46,42 +61,56 @@ export default function AddCustomer(props) {
                         name="firstname"
                         value={customer.firstname}
                         onChange={handleInputChange}
+                        error={validationError && !customer.firstname}
+                        required
                     />
                     <TextField
                         label="Last name"
                         name="lastname"
                         value={customer.lastname}
                         onChange={handleInputChange}
+                        error={validationError && !customer.lastname}
+                        required
                     />
                     <TextField
                         label="Streetaddress"
                         name="streetaddress"
                         value={customer.streetaddress}
                         onChange={handleInputChange}
+                        error={validationError && !customer.streetaddress}
+                        required
                     />
                     <TextField
                         label="postcode"
                         name="postcode"
                         value={customer.postcode}
                         onChange={handleInputChange}
+                        error={validationError && !customer.postcode}
+                        required
                     />
                     <TextField
                         label="City"
                         name="city"
                         value={customer.city}
                         onChange={handleInputChange}
+                        error={validationError && !customer.city}
+                        required
                     />
                     <TextField
                         label="Email"
                         name="email"
                         value={customer.email}
                         onChange={handleInputChange}
+                        error={validationError && !customer.email}
+                        required
                     />
                     <TextField
                         label="Phone"
                         name="phone"
                         value={customer.phone}
                         onChange={handleInputChange}
+                        error={validationError && !customer.phone}
+                        required
                     />
                 </DialogContent>
                 <DialogActions>

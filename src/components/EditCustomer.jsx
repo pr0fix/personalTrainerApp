@@ -35,7 +35,7 @@ export default function AddCustomer(props) {
     // Renders the components to edit customer
     return (
         <>
-            <Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} variant="outlined" onClick={handleShowDialog}>Edit</Button>
+            <Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} onClick={handleShowDialog}>Edit</Button>
             <Dialog
                 open={showDialog}
                 onClose={handleCloseDialog}

@@ -59,29 +59,28 @@ export default function AddTraining(props) {
                     /> */}
                     
                     <TextField
-                        required
                         label="Duration"
                         name="duration"
                         value={training.duration}
                         onChange={handleInputChange}
                         error={validationError && !training.duration}
+                        required
                     />
                     <TextField
-
-                        required
                         label="Activity"
                         name="activity"
                         value={training.activity}
                         onChange={handleInputChange}
                         error={validationError && !training.activity}
+						required
                     />
                     <TextField
-                        required
                         label="Customer ID"
                         name="customerId"
                         value={training.customerId}
                         onChange={handleInputChange}
                         error={validationError && !training.customerId}
+						required
                     ></TextField>
                 </DialogContent>
                 <DialogActions>
