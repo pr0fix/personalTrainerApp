@@ -1,12 +1,28 @@
-import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@mui/material";
-import { useState } from "react";
+import { Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Select, MenuItem, FormControl, InputLabel, Menu } from "@mui/material";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function AddTraining(props) {
-
+    const REST_URL = 'https://traineeapp.azurewebsites.net/api'; //URL for API calls
     // States
+
     const [validationError, setValidationError] = useState(false);
     const [training, setTraining] = useState({ date: '', duration: '', activity: '', customerId: '' });
     const [showDialog, setShowDialog] = useState(false);
+    const [customers, setCustomers] = useState([]); // State to store customers
+
+    // GET-request to receive all customers
+    const fetchCustomers = async () => {
+        try {
+            const customerRes = await axios.get(`${REST_URL}/customers`);
+            const customerResData = customerRes.data.content;
+            setCustomers(customerResData);
+            console.log(customerResData)
+        }
+        catch (err) {
+            console.error('Error fetching customers:', err);
+        }
+    }
 
     // Closes add-form
     const handleCloseDialog = (_, reason) => {
@@ -38,6 +54,9 @@ export default function AddTraining(props) {
         setValidationError(false);
     }
 
+    useEffect(()=> {
+        fetchCustomers();
+    }, [])
 
     // Renders the components to add a new training
     return (
@@ -47,17 +66,11 @@ export default function AddTraining(props) {
                 open={showDialog}
                 onClose={handleCloseDialog}
             >
-                <DialogTitle>New Training</DialogTitle>
-                <DialogContent>
-                    {/* <TextField
-                        required
-                        label="Date"
-                        name="date"
-                        value={training.date}
-                        onChange={handleInputChange}
-                        error={validationError && !training.date}
-                    /> */}
+                <DialogTitle style={{textAlign:"center"}}>New Training</DialogTitle>
+                <DialogContent style={{ display: "flex", flexDirection: "column", gap: "10px", width:"300px", paddingTop:"5px"}}>
                     
+                    {/*TODO: datepicker */}
+
                     <TextField
                         label="Duration"
                         name="duration"
@@ -66,6 +79,7 @@ export default function AddTraining(props) {
                         error={validationError && !training.duration}
                         required
                     />
+
                     <TextField
                         label="Activity"
                         name="activity"
@@ -74,20 +88,36 @@ export default function AddTraining(props) {
                         error={validationError && !training.activity}
 						required
                     />
-                    <TextField
-                        label="Customer ID"
-                        name="customerId"
-                        value={training.customerId}
-                        onChange={handleInputChange}
-                        error={validationError && !training.customerId}
-						required
-                    ></TextField>
+
+                    <FormControl 
+                    	fullWidth
+                    	error={validationError && !training.customerId}
+                    >
+                    <InputLabel>Customer</InputLabel>
+                            
+							<Select
+                            	value={training.customerId || ''}
+                            	onChange={(event) => setTraining({...training, customerId: event.target.value})}
+                            	required
+                            >
+                        	<MenuItem 
+								disabled 
+								value=""
+							>Select a customer
+                        	</MenuItem>
+                       			{customers.map((customer) => {
+                           		return <MenuItem key={customer.links[0].href} value={customer.links[0].href}
+                            	> {customer.firstname} {customer.lastname}
+                            	</MenuItem>})}
+                    </Select>
+                    </FormControl>
+
                 </DialogContent>
+                
                 <DialogActions>
                     <Button onClick={handleCloseDialog}>Close</Button>
                     <Button onClick={handleSave}>Save</Button>
                 </DialogActions>
-
 
             </Dialog>
 

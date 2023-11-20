@@ -49,6 +49,7 @@ export default function TrainingCalendar() {
 
     // Render the Calendar component with defined properties
     return (
+        <div style={{height:'100%'}}>
         <Calendar
             localizer={momentLocalizer(moment)}
             events={events}
@@ -56,7 +57,8 @@ export default function TrainingCalendar() {
             endAccessor="end"
             defaultView="month"
             views={["month", "week", "day", "agenda"]}
-            style={{ height: 500, }}
+            style={{ height: 650 }}
         />
+        </div>
     );
 }

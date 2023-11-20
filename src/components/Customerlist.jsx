@@ -9,22 +9,22 @@ import EditCustomer from './EditCustomer'
 
 
 export default function Customerpage() {
-    //URL for API calls
-    const REST_URL = 'https://traineeapp.azurewebsites.net/api';
+
+    const REST_URL = 'https://traineeapp.azurewebsites.net/api'; //URL for API calls
 
     // States
-    const [customers, setCustomers] = useState([]);
-    const [open, setOpen] = useState(false);
-    const [msg, setMsg] = useState("");
-    const [gridApi, setGridApi] = useState(null);
+    const [customers, setCustomers] = useState([]); // State to store customers
+    const [open, setOpen] = useState(false); // State to show/hide Snackbar-component
+    const [msg, setMsg] = useState(""); // State to set message to be showed in Snackbar-component
+    const [gridApi, setGridApi] = useState(null); // State to set params.api to when grid is ready
 
 
     // GET-request to receive all customers
     const getCustomers = async () => {
         try {
-            const response = await axios.get(`${REST_URL}/customers`);
-            const resData = response.data.content;
-            setCustomers(resData);
+            const customerRes = await axios.get(`${REST_URL}/customers`);
+            const customerResData = customerRes.data.content;
+            setCustomers(customerResData);
         }
         catch (err) {
             console.error('Error fetching customers:', err);
@@ -35,12 +35,12 @@ export default function Customerpage() {
     // POST-request to add a new customer
     const addCustomer = async (customer) => {
         try {
-            const res = await axios.post(`${REST_URL}/customers`, customer, {
+            const addCustomerRes = await axios.post(`${REST_URL}/customers`, customer, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log('Post request successful!', res.data);
+            console.log('Post request successful!', addCustomerRes.data);
             setMsg("Customer added successfully!");
             setOpen(true);
             getCustomers();
@@ -55,8 +55,8 @@ export default function Customerpage() {
     const deleteCustomer = async (params) => {
         try {
             if (window.confirm("Are you sure?")) {
-                const res = await axios.delete(params.data.links[1].href);
-                console.log("Customer deleted successfully!", res.data)
+                const deleteCustomerRes = await axios.delete(params.data.links[1].href);
+                console.log("Customer deleted successfully!", deleteCustomerRes.data)
                 setMsg("Customer deleted successfully!")
                 setOpen(true);
                 getCustomers();
@@ -72,7 +72,7 @@ export default function Customerpage() {
     const updateCustomer = async (customer, link) => {
         try {
             if (window.confirm("Are you sure?")) {
-                const res = await axios.put(link, customer, {
+                await axios.put(link, customer, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
