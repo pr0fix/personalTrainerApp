@@ -4,8 +4,8 @@ import axios from "axios";
 
 export default function AddTraining(props) {
     const REST_URL = 'https://traineeapp.azurewebsites.net/api'; //URL for API calls
-    // States
 
+    // States
     const [validationError, setValidationError] = useState(false);
     const [training, setTraining] = useState({ date: '', duration: '', activity: '', customerId: '' });
     const [showDialog, setShowDialog] = useState(false);
@@ -17,7 +17,6 @@ export default function AddTraining(props) {
             const customerRes = await axios.get(`${REST_URL}/customers`);
             const customerResData = customerRes.data.content;
             setCustomers(customerResData);
-            console.log(customerResData)
         }
         catch (err) {
             console.error('Error fetching customers:', err);
@@ -77,7 +76,7 @@ export default function AddTraining(props) {
                         value={training.duration}
                         onChange={handleInputChange}
                         error={validationError && !training.duration}
-                        required
+                        // required
                     />
 
                     <TextField
@@ -86,7 +85,7 @@ export default function AddTraining(props) {
                         value={training.activity}
                         onChange={handleInputChange}
                         error={validationError && !training.activity}
-						required
+						// required
                     />
 
                     <FormControl 
@@ -98,7 +97,7 @@ export default function AddTraining(props) {
 							<Select
                             	value={training.customerId || ''}
                             	onChange={(event) => setTraining({...training, customerId: event.target.value})}
-                            	required
+                            	// required
                             >
                         	<MenuItem 
 								disabled 

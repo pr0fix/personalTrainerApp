@@ -105,8 +105,16 @@ export default function Trainingpage() {
 		},
 		{ headerName: 'Duration', field: 'duration', ...columnProperties },
 		{ headerName: 'Activity', field: 'activity', ...columnProperties },
-		{ headerName: 'Customer first name', field: 'customer.firstname', ...columnProperties },
-		{ headerName: 'Customer last name', field: 'customer.lastname', ...columnProperties },
+		{ headerName: 'Customer', field: 'customer',
+			valueGetter: (params) => {
+				const customer = params.data.customer;
+				if(customer && customer.firstname && customer.lastname) {
+					return `${customer.firstname} ${customer.lastname}`;	
+				} else {
+					return '';
+				}
+			}
+		},
 		{
 			cellRenderer: params =>
 				<Button size="small" color="error" onClick={() => deleteTraining(params)}>Delete</Button>
@@ -117,12 +125,12 @@ export default function Trainingpage() {
 	// Renders the Ag-grid component with training data
 	return (
 		<>
-			<div className="ag-theme-material" style={{ height: 700, width: 1200, margin: "auto" }}>
+			<div className="ag-theme-material" style={{ height: 600, width: 1000, margin: "auto" }}>
 				<AgGridReact
 					rowData={trainings}
 					columnDefs={columns}
 					pagination={true}
-					paginationPageSize={10}
+					paginationPageSize={8}
 
 				/>
 				<Snackbar

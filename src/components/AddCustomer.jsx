@@ -63,7 +63,7 @@ export default function AddCustomer(props) {
                         value={customer.firstname}
                         onChange={handleInputChange}
                         error={validationError && !customer.firstname}
-                        required
+                        // required
                     />
                     <TextField
                         label="Last name"
@@ -71,7 +71,7 @@ export default function AddCustomer(props) {
                         value={customer.lastname}
                         onChange={handleInputChange}
                         error={validationError && !customer.lastname}
-                        required
+                        // required
                     />
                     <TextField
                         label="Streetaddress"
@@ -79,7 +79,7 @@ export default function AddCustomer(props) {
                         value={customer.streetaddress}
                         onChange={handleInputChange}
                         error={validationError && !customer.streetaddress}
-                        required
+                        // required
                     />
                     <TextField
                         label="postcode"
@@ -87,7 +87,7 @@ export default function AddCustomer(props) {
                         value={customer.postcode}
                         onChange={handleInputChange}
                         error={validationError && !customer.postcode}
-                        required
+                        // required
                     />
                     <TextField
                         label="City"
@@ -95,7 +95,7 @@ export default function AddCustomer(props) {
                         value={customer.city}
                         onChange={handleInputChange}
                         error={validationError && !customer.city}
-                        required
+                        // required
                     />
                     <TextField
                         label="Email"
@@ -103,7 +103,7 @@ export default function AddCustomer(props) {
                         value={customer.email}
                         onChange={handleInputChange}
                         error={validationError && !customer.email}
-                        required
+                        // required
                     />
                     <TextField
                         label="Phone"
@@ -111,7 +111,7 @@ export default function AddCustomer(props) {
                         value={customer.phone}
                         onChange={handleInputChange}
                         error={validationError && !customer.phone}
-                        required
+                        // required
                     />
                 </DialogContent>
                 <DialogActions>

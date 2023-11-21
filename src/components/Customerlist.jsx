@@ -147,13 +147,12 @@ export default function Customerpage() {
     return (
         <>
             <div>
-
-                <div className="ag-theme-material" style={{ height: 650, width: 1800, margin: "auto" }}>
+                <div className="ag-theme-material" style={{ height: '70vh', maxWidth:   '100%', margin: "auto" }}>
                     <AgGridReact
                         rowData={customers}
                         columnDefs={columns}
                         pagination={true}
-                        paginationPageSize={10}
+                        paginationPageSize={8}
                         onGridReady={onGridReady}
                     />
 
