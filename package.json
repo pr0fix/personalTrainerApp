@@ -17,11 +17,13 @@
     "ag-grid-community": "^30.2.1",
     "ag-grid-react": "^30.2.1",
     "axios": "^1.6.2",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-big-calendar": "^1.8.5",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0",
+    "recharts": "^2.10.1",
     "vite": "^4.5.0"
   },
   "devDependencies": {

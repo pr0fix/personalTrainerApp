@@ -7,15 +7,17 @@ https://traineeapp.azurewebsites.net/api
 
 <!-- Npm installs needed to run this project: -->
 npm install vite@^4.5.0
-npm install @emotion/react@^11.11.1
-npm install @emotion/styled@^11.11.0
-npm install @mui/material@^5.14.18
-npm install @mui/x-date-pickers@^6.18.1
-npm install ag-grid-community@^30.2.1
-npm install ag-grid-react@^30.2.1
-npm install axios@^1.6.2
-npm install moment@^2.29.4
-npm install react@^18.2.0
-npm install react-big-calendar@^1.8.5
-npm install react-dom@^18.2.0
-npm install react-router-dom@^6.19.0
+npm install @emotion/react
+npm install @emotion/styled
+npm install @mui/material
+npm install @mui/x-date-pickers
+npm install ag-grid-community
+npm install ag-grid-react
+npm install axios
+npm install moment
+npm install react
+npm install react-big-calendar
+npm install react-dom
+npm install react-router-dom
+npm install recharts
+npm install lodash

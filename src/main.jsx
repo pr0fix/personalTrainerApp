@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import { Homepage, Customerpage, Trainingpage, Error, TrainingCalendar} from './Pages.jsx'
+import { Homepage, Customerpage, Trainingpage, Error, Trainingcalendar, Trainingstats} from './Pages.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -24,8 +24,12 @@ const router = createBrowserRouter([
       },
       {
         path: "trainingcalendar",
-        element: <TrainingCalendar />
+        element: <Trainingcalendar />
       },
+      {
+        path:"trainingstats",
+        element: <Trainingstats/>
+      }
     ]
   }
 ]);

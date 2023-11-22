@@ -30,6 +30,9 @@ export default function App() {
         <Link to="/trainingcalendar">
           <Button variant={location.pathname === '/trainingcalendar' ? "contained" : "outlined"}>Calendar</Button>
         </Link>
+        <Link to="/trainingstats">
+          <Button variant={location.pathname === '/trainingstats' ? "contained" : "outlined"}>Stats</Button>
+        </Link>
       </nav>
       <Outlet />
     </>
