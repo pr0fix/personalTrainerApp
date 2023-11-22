@@ -1,2 +1,2 @@
 1. add comments to code
-2. deploy the application 
+2. deploy the application (done but router doesnt work)
