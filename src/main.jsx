@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/personalTrainerApp/',
     element: <App />,
     errorElement: <Error />,
     children: [
@@ -15,19 +15,19 @@ const router = createBrowserRouter([
         index: true
       },
       {
-        path: "customer",
+        path: "/personalTrainerApp/customer",
         element: <Customerpage />
       },
       {
-        path: "training",
+        path: "/personalTrainerApp/training",
         element: <Trainingpage />
       },
       {
-        path: "trainingcalendar",
+        path: "/personalTrainerApp/trainingcalendar",
         element: <Trainingcalendar />
       },
       {
-        path:"trainingstats",
+        path:"/personalTrainerApp/trainingstats",
         element: <Trainingstats/>
       }
     ]
