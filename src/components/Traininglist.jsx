@@ -40,7 +40,7 @@ export default function Trainingpage() {
 
 			// Making a new training object to be added to trainings
 			const newTraining = {
-				date: moment().toISOString(),
+				date: training.date,
 				duration: training.duration,
 				activity: training.activity,
 				customer: customerRefLink
@@ -100,7 +100,7 @@ export default function Trainingpage() {
 		{
 			headerName: 'Date', field: 'date', ...columnProperties,
 			cellRenderer: (data) => {
-				return data.value ? (new Date(data.value)).toLocaleString() : '';
+				return data.value ? moment(data.value).format('DD.MM.YYYY HH:mm') : '';
 			}
 		},
 		{ headerName: 'Duration', field: 'duration', ...columnProperties },

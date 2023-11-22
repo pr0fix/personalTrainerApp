@@ -1,0 +1,2 @@
+1. add a statistics page with graphical diagram where you can see how many activities have been reserved in minutes
+2. deploy the application 
