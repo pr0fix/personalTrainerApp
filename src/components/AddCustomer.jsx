@@ -55,7 +55,13 @@ export default function AddCustomer(props) {
                 onClose={handleCloseDialog}
             >
                 <DialogTitle style={{textAlign:"center"}}>New Customer</DialogTitle>
-                <DialogContent style={{display:"flex", flexWrap: "wrap", flexDirection:"column", gap: "10px", width:"400px", paddingTop:"5px"}}>
+                <DialogContent 
+                style={{display:"flex", 
+                flexWrap: "wrap", 
+                flexDirection:"column", 
+                gap: "10px", 
+                width:"400px", 
+                paddingTop:"5px"}}>
                     
                     <TextField
                         label="First name"
@@ -114,11 +120,11 @@ export default function AddCustomer(props) {
                         // required
                     />
                 </DialogContent>
+                
                 <DialogActions>
                     <Button onClick={handleCloseDialog}>Close</Button>
                     <Button onClick={handleSave}>Save</Button>
                 </DialogActions>
-
 
             </Dialog>
 

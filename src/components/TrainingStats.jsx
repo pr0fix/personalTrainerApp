@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { BarChart, ResponsiveContainer, Bar, XAxis, YAxis, Label } from "recharts";
 import { groupBy, sumBy } from "lodash";
+import axios from "axios";
 
 export default function Trainingstats() {
 
@@ -40,7 +40,12 @@ export default function Trainingstats() {
 
     return (
         <>
-        <div style={{display:"flex", justifyContent:"center"}}>
+        <div style={{
+            display:"flex", 
+            justifyContent:"center",
+            alignItems:'center',
+            height: '80vh'
+            }}>
         <ResponsiveContainer width='80%' height={400}>
             <BarChart data={processedData}>
                <XAxis dataKey="activity"/>

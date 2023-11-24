@@ -1,11 +1,11 @@
 import { AgGridReact } from "ag-grid-react";
 import { useEffect, useState } from "react";
+import { Button, Snackbar } from "@mui/material";
 import axios from "axios";
+import moment from "moment/moment";
+import AddTraining from "./AddTraining";
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-material.css'
-import AddTraining from "./AddTraining";
-import moment from "moment/moment";
-import { Button, Snackbar } from "@mui/material";
 
 export default function Trainingpage() {
 
@@ -125,7 +125,7 @@ export default function Trainingpage() {
 	// Renders the Ag-grid component with training data
 	return (
 		<>
-			<div className="ag-theme-material" style={{ height: 600, width: 1000, margin: "auto" }}>
+			<div className="ag-theme-material" style={{ height: '70vh', width: 1000, margin: "auto" }}>
 				<AgGridReact
 					rowData={trainings}
 					columnDefs={columns}

@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { AgGridReact } from "ag-grid-react";
 import { Button, Snackbar } from '@mui/material';
 import axios from 'axios';
-import 'ag-grid-community/styles/ag-grid.css'
-import 'ag-grid-community/styles/ag-theme-material.css'
 import AddCustomer from './AddCustomer';
 import EditCustomer from './EditCustomer'
+import 'ag-grid-community/styles/ag-grid.css'
+import 'ag-grid-community/styles/ag-theme-material.css'
 
 
 export default function Customerpage() {
@@ -149,7 +149,7 @@ export default function Customerpage() {
     return (
         <>
             <div>
-                <div className="ag-theme-material" style={{ height: '70vh', width: '100%', margin: "auto" }}>
+                <div className="ag-theme-material" style={{ height: '70vh', width: 1500, margin: "auto" }}>
                     <AgGridReact
                         rowData={customers}
                         columnDefs={columns}

@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { Homepage, Customerpage, Trainingpage, Error, Trainingcalendar, Trainingstats} from './Pages.jsx'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import { Homepage, Customerpage, Trainingpage, Error, Trainingcalendar, Trainingstats} from './Pages.jsx';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
@@ -15,11 +15,11 @@ const router = createBrowserRouter([
         index: true
       },
       {
-        path: "/personalTrainerApp/customer",
+        path: "/personalTrainerApp/customers",
         element: <Customerpage />
       },
       {
-        path: "/personalTrainerApp/training",
+        path: "/personalTrainerApp/trainings",
         element: <Trainingpage />
       },
       {
