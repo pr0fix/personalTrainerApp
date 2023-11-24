@@ -96,24 +96,26 @@ export default function Customerpage() {
     const columnProperties = {
         sortable: true,
         filter: true,
-        floatingFilter: true
+        floatingFilter: true,
+        width: 150
     }
 
     // Ag grid columns
     const columns = [
-        { headerName: 'Firstname', field: 'firstname', ...columnProperties },
-        { headerName: 'Lastname', field: 'lastname', ...columnProperties },
-        { headerName: 'Street address', field: 'streetaddress', ...columnProperties },
+        { headerName: 'First Name', field: 'firstname', ...columnProperties},
+        { headerName: 'Last Name', field: 'lastname', ...columnProperties },
+        { headerName: 'Street address', field: 'streetaddress', ...columnProperties, width: 200 },
         { headerName: 'Postcode', field: 'postcode', ...columnProperties },
-        { headerName: 'City', field: 'city', ...columnProperties },
-        { headerName: 'Email', field: 'email', ...columnProperties },
-        { headerName: 'Phone', field: 'phone', ...columnProperties },
+        { headerName: 'City', field: 'city', ...columnProperties},
+        { headerName: 'Email', field: 'email', ...columnProperties, width: 200},
+        { headerName: 'Phone', field: 'phone', ...columnProperties},
         {
             cellRenderer: row => <EditCustomer updateCustomer={updateCustomer} customer={row.data} />
+        , width: 150
         },
         {
             cellRenderer: params =>
-                <Button size="small" color="error" onClick={() => deleteCustomer(params)}>Delete</Button>
+                <Button size="small" color="error" onClick={() => deleteCustomer(params)}>Delete</Button>, width: 150
         }
     ]
 
@@ -147,7 +149,7 @@ export default function Customerpage() {
     return (
         <>
             <div>
-                <div className="ag-theme-material" style={{ height: '70vh', maxWidth:   '100%', margin: "auto" }}>
+                <div className="ag-theme-material" style={{ height: '70vh', width: '100%', margin: "auto" }}>
                     <AgGridReact
                         rowData={customers}
                         columnDefs={columns}
