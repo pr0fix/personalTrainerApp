@@ -125,7 +125,7 @@ export default function Trainingpage() {
 	// Renders the Ag-grid component with training data
 	return (
 		<>
-			<div className="ag-theme-material" style={{ height: '70vh', width: 1000, margin: "auto" }}>
+			<div className="ag-theme-material" style={{ height: '70vh', maxWidth: 1000, margin: "auto" }}>
 				<AgGridReact
 					rowData={trainings}
 					columnDefs={columns}

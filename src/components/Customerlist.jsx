@@ -149,7 +149,7 @@ export default function Customerpage() {
     return (
         <>
             <div>
-                <div className="ag-theme-material" style={{ height: '70vh', width: 1500, margin: "auto" }}>
+                <div className="ag-theme-material" style={{ height: '70vh', maxWidth: 1500, margin: "auto" }}>
                     <AgGridReact
                         rowData={customers}
                         columnDefs={columns}
