@@ -166,11 +166,11 @@ export default function Customerpage() {
                     ></Snackbar>
                 </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex' }}>
                 <AddCustomer
                     addCustomer={addCustomer}
                 />
-                <Button style={{ margin: "5px" }} variant="contained" onClick={onExportClick}>export</Button>
+                <Button style={{ margin: "5px" }} variant="contained" onClick={onExportClick}>export as csv</Button>
             </div>
         </>
 
