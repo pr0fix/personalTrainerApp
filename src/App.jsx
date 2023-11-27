@@ -40,7 +40,6 @@ export default function App() {
 	const location = useLocation();
 	const pageTitle = getPageTitle(location.pathname);
 
-
 	const handleNavbarCollapse = () => {
 		setNavbarExpanded(false);
 	}
@@ -66,11 +65,15 @@ export default function App() {
 					<NavbarCollapse id="navbar-nav">
 
 						<Nav style={{ gap: '5px' }} className="ms-auto">
+							{getPageTitle(location.pathname) != 'Homepage' ?
+							<>
 							<NavLinkButton to="/personalTrainerApp/" label="Home" currentPath={location.pathname} handleNavbarCollapse={handleNavbarCollapse}/>
 							<NavLinkButton to="/personalTrainerApp/customers" label="Customers" currentPath={location.pathname} handleNavbarCollapse={handleNavbarCollapse}/>
 							<NavLinkButton to="/personalTrainerApp/trainings" label="Trainings" currentPath={location.pathname} handleNavbarCollapse={handleNavbarCollapse}/>
 							<NavLinkButton to="/personalTrainerApp/trainingcalendar" label="Calendar" currentPath={location.pathname} handleNavbarCollapse={handleNavbarCollapse}/>
 							<NavLinkButton to="/personalTrainerApp/trainingstats" label="Statistics" currentPath={location.pathname} handleNavbarCollapse={handleNavbarCollapse}/>
+							</>
+						: ''}
 						</Nav>
 					</NavbarCollapse>
 				</Container>
