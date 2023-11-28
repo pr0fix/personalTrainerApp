@@ -20,9 +20,11 @@ export default function Trainingstats() {
                 // Makes groups of activities and saves them to constant named activity
                 const activity = groupBy(resData, "activity");
 
-                
+                // Makes an array out of activities and maps them into key values
                 const chartData = Object.keys(activity).map((key) => ({
+                    // Saves each key (activity) to the activity property
                     activity: key,
+                    // Use Iodash sumBy to get total duration for each activity
                     duration: sumBy(activity[key], "duration"),
                 }));
 

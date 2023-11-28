@@ -2,8 +2,8 @@
 
 This project is part of the Front End Development course at Haaga-Helia University of Applied Sciences.
 
-The application relies on an API provided by the course, accessible at:
-https://traineeapp.azurewebsites.net/api
+The application relies on an API provided by the course, accessible at: 
+[Trainee App API](https://traineeapp.azurewebsites.net/api)
 
 ## Setup Instructions
 
@@ -11,7 +11,7 @@ https://traineeapp.azurewebsites.net/api
 - Node.js & npm installed
 
 ### Installation
-To set up the project, clone the repository and install dependencies:
+To set up the project, follow these steps:
 
 ```bash
 # Clone the repository

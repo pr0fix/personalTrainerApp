@@ -36,7 +36,7 @@ export default function Homepage() {
 					>
 						<CardCover>
 							<img
-								src="images\customer.webp"
+								src="images/customer.webp"
 								alt="customer"
 							/>
 						</CardCover>
@@ -76,7 +76,7 @@ export default function Homepage() {
 						}}>
 						<CardCover>
 							<img
-								src="images\gym.webp"
+								src="images/gym.webp"
 								alt="gym"
 							/>
 						</CardCover>
@@ -119,7 +119,7 @@ export default function Homepage() {
 						}}>
 						<CardCover>
 							<img
-								src="images\calendar.webp"
+								src="images/calendar.webp"
 								alt="calendar"
 							/>
 						</CardCover>
@@ -163,7 +163,7 @@ export default function Homepage() {
 
 						<CardCover>
 							<img
-								src="images\statistics.webp"
+								src="images/statistics.webp"
 								alt="statistics"
 							/>
 						</CardCover>
