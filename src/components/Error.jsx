@@ -1,4 +1,5 @@
-import { useRouteError } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Link, useRouteError } from "react-router-dom";
 
 export default function Error() {
 
@@ -9,6 +10,14 @@ export default function Error() {
         <>
             <h1>You've diven into the abyss, page not found!</h1>
             <p>{error.data}</p>
+            <Link to="/personalTrainerApp/">
+                <Button 
+                    sx={{marginLeft:'5px'}}
+                    variant="contained"
+                >
+                    Back to app
+                </Button>
+            </Link>
         </>
     )
 }

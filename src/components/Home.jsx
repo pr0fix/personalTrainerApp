@@ -2,9 +2,31 @@ import { Card, CardContent, CardCover, Container, Link, Typography } from "@mui/
 export default function Homepage() {
 	return (
 		<>
-			<Container sx={{ height: '80vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-				<Typography sx={{ textAlign: 'center', fontSize: '40px' }} level="title-lg">Welcome to my Personal Trainer App!</Typography>
-				<Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+			<Container 
+				sx={{ 
+					height: '80vh', 
+					display: 'flex', 
+					justifyContent: 'center', 
+					alignItems: 'center', 
+					flexDirection: 'column' }}
+			>
+				<Typography 
+					sx={{ 
+						textAlign: 'center', 
+						fontSize: '40px', 
+						margin:'20px' 
+					}} 
+					level="title-lg"
+				>	Welcome to my Personal Trainer App!
+				</Typography>
+
+				<Container 
+					sx={{ 
+						display: 'flex', 
+						justifyContent: 'center', 
+						alignItems: 'center' }}
+				>
+					
 					<Card
 						sx={{
 							minWidth: 320,
@@ -30,8 +52,7 @@ export default function Homepage() {
 							<Typography
 								level="title-lg"
 								textColor="#fff"
-							>
-								Customers
+							>	Customers
 							</Typography>
 							<Typography
 								level="body-sm"
@@ -41,8 +62,7 @@ export default function Homepage() {
 									underline="none"
 									href="/personalTrainerApp/customers"
 									sx={{ color: 'neutral.300' }}
-								>
-									Press to see customers
+								>	Press to see customers
 								</Link>
 							</Typography>
 						</CardContent>

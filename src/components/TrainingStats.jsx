@@ -40,24 +40,36 @@ export default function Trainingstats() {
 
     return (
         <>
-        <div style={{
-            display:"flex", 
-            justifyContent:"center",
-            alignItems:'center',
-            height: '80vh'
-            }}>
-        <ResponsiveContainer width='80%' height={400}>
-            <BarChart data={processedData}>
-               <XAxis dataKey="activity"/>
+        <div 
+            style={{
+                display:"flex", 
+                justifyContent:"center",
+                alignItems:'center',
+                height: '80vh'
+            }}
+        >
+        <ResponsiveContainer 
+            width='80%' 
+            height={400}
+        >
+            <BarChart 
+                data={processedData}
+            >
+               <XAxis 
+                    dataKey="activity"
+            	/>
                <YAxis>
                 <Label
-                value="Duration (min)"
-                position="insideLeft"
-                fontSize="20px"
-                angle={270}
-                ></Label>
+                    value="Duration (min)"
+                    position="insideLeft"
+                    fontSize="20px"
+                    angle={270}
+                />
                </YAxis>
-               <Bar dataKey="duration" fill="#8884d8"/>
+               <Bar 
+                    dataKey="duration" 
+                    fill="#8884d8"
+                />
             </BarChart>
         </ResponsiveContainer>
         

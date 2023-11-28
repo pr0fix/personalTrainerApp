@@ -170,7 +170,12 @@ export default function Customerpage() {
                 <AddCustomer
                     addCustomer={addCustomer}
                 />
-                <Button style={{ margin: "5px" }} variant="contained" onClick={onExportClick}>export as csv</Button>
+                <Button 
+                    sx={{ margin: "5px" }} 
+                    variant="contained" 
+                    onClick={onExportClick}
+                >   export as csv
+                </Button>
             </div>
         </>
 

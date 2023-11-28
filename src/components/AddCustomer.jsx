@@ -49,27 +49,36 @@ export default function AddCustomer(props) {
     // Renders the components to add a new customer
     return (
         <>
-            <Button style={{ margin: "5px" }} variant="contained" onClick={handleShowDialog}>Add customer</Button>
+            <Button 
+           		sx={{ margin: "5px" }} 
+            	variant="contained" 
+                onClick={handleShowDialog}
+			>	Add customer
+			</Button>
             <Dialog
                 open={showDialog}
                 onClose={handleCloseDialog}
             >
-                <DialogTitle style={{textAlign:"center"}}>New Customer</DialogTitle>
+                <DialogTitle 
+					sx={{textAlign:"center"}}
+				>	New Customer
+				</DialogTitle>
                 <DialogContent 
-                style={{display:"flex", 
-                flexWrap: "wrap", 
-                flexDirection:"column", 
-                gap: "10px", 
-                width:"400px", 
-                paddingTop:"5px"}}>
-                    
+					sx={{
+					display:"flex", 
+					flexWrap: "wrap", 
+					flexDirection:"column", 
+					gap: "10px", 
+					width:"400px", 
+					paddingTop:"5px"}}
+				>
+						
                     <TextField
                         label="First name"
                         name="firstname"
                         value={customer.firstname}
                         onChange={handleInputChange}
                         error={validationError && !customer.firstname}
-                        // required
                     />
                     <TextField
                         label="Last name"
@@ -77,7 +86,6 @@ export default function AddCustomer(props) {
                         value={customer.lastname}
                         onChange={handleInputChange}
                         error={validationError && !customer.lastname}
-                        // required
                     />
                     <TextField
                         label="Streetaddress"
@@ -85,7 +93,6 @@ export default function AddCustomer(props) {
                         value={customer.streetaddress}
                         onChange={handleInputChange}
                         error={validationError && !customer.streetaddress}
-                        // required
                     />
                     <TextField
                         label="postcode"
@@ -93,7 +100,6 @@ export default function AddCustomer(props) {
                         value={customer.postcode}
                         onChange={handleInputChange}
                         error={validationError && !customer.postcode}
-                        // required
                     />
                     <TextField
                         label="City"
@@ -101,7 +107,6 @@ export default function AddCustomer(props) {
                         value={customer.city}
                         onChange={handleInputChange}
                         error={validationError && !customer.city}
-                        // required
                     />
                     <TextField
                         label="Email"
@@ -109,7 +114,6 @@ export default function AddCustomer(props) {
                         value={customer.email}
                         onChange={handleInputChange}
                         error={validationError && !customer.email}
-                        // required
                     />
                     <TextField
                         label="Phone"
@@ -117,17 +121,21 @@ export default function AddCustomer(props) {
                         value={customer.phone}
                         onChange={handleInputChange}
                         error={validationError && !customer.phone}
-                        // required
                     />
                 </DialogContent>
                 
                 <DialogActions>
-                    <Button onClick={handleCloseDialog}>Close</Button>
-                    <Button onClick={handleSave}>Save</Button>
+                    <Button 
+						onClick={handleCloseDialog}
+					>	Close
+					</Button>
+                    <Button 
+						onClick={handleSave}
+					>	Save
+					</Button>
                 </DialogActions>
 
             </Dialog>
-
 
         </>
     )

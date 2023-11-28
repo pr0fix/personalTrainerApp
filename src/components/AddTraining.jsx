@@ -68,24 +68,47 @@ export default function AddTraining(props) {
 	// Renders the components to add a new training
 	return (
 		<>
-			<Button style={{ margin: "5px", display: "flex", justifyContent: 'flex-end' }} variant="contained" onClick={handleShowDialog}>Add training</Button>
+			<Button 
+			sx={{ 
+				margin: "5px",
+				display: "flex", 
+				justifyContent: 'flex-end' 
+			}} 
+				variant="contained" 
+				onClick={handleShowDialog}
+			>	Add training
+			</Button>
+
 			<Dialog
 				open={showDialog}
 				onClose={handleCloseDialog}
 			>
-				<DialogTitle style={{ textAlign: "center" }}>New Training</DialogTitle>
-				<DialogContent style={{ display: "flex", flexDirection: "column", gap: "10px", width: "300px", paddingTop: "5px" }}>
 
-					<LocalizationProvider dateAdapter={AdapterDayjs}>
-						<DateTimePicker 
-						label="Date *"
-						name="date"
-						value={training.date}
-						onChange={handleInputDate}
-						error={validationError && !training.date}
-						ampm={false}
-						>
-						</DateTimePicker>
+				<DialogTitle 
+					sx={{ textAlign: "center" }}
+				>	New Training
+				</DialogTitle>
+				
+				<DialogContent 
+					sx={{ 
+						display: "flex", 
+						flexDirection: "column", 
+						gap: "10px", 
+						width: "300px", 
+						paddingTop: "5px" }}
+				>
+
+					<LocalizationProvider 
+						dateAdapter={AdapterDayjs}>
+							<DateTimePicker 
+								label="Date *"
+								name="date"
+								value={training.date}
+								onChange={handleInputDate}
+								error={validationError && !training.date}
+								ampm={false}
+							>
+							</DateTimePicker>
 					</LocalizationProvider>
 
 					<TextField
@@ -94,7 +117,7 @@ export default function AddTraining(props) {
 						value={training.duration}
 						onChange={handleInputChange}
 						error={validationError && !training.duration}
-					required
+						required
 					/>
 
 					<TextField
@@ -103,7 +126,7 @@ export default function AddTraining(props) {
 						value={training.activity}
 						onChange={handleInputChange}
 						error={validationError && !training.activity}
-					required
+						required
 					/>
 
 					<FormControl
@@ -120,10 +143,12 @@ export default function AddTraining(props) {
 							<MenuItem
 								disabled
 								value=""
-							>Select a customer
+							>	Select a customer
 							</MenuItem>
 							{customers.map((customer) => {
-								return <MenuItem key={customer.links[0].href} value={customer.links[0].href}
+								return <MenuItem 
+								key={customer.links[0].href} 
+								value={customer.links[0].href}
 								> {customer.firstname} {customer.lastname}
 								</MenuItem>
 							})}
@@ -133,8 +158,15 @@ export default function AddTraining(props) {
 				</DialogContent>
 
 				<DialogActions>
-					<Button onClick={handleCloseDialog}>Close</Button>
-					<Button onClick={handleSave}>Save</Button>
+					<Button 
+						onClick={handleCloseDialog}
+					>	Close
+					</Button>
+					
+					<Button 
+						onClick={handleSave}
+					>	Save
+					</Button>
 				</DialogActions>
 
 			</Dialog>
