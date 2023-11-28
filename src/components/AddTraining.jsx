@@ -69,14 +69,14 @@ export default function AddTraining(props) {
 	return (
 		<>
 			<Button 
-			sx={{ 
-				margin: "5px",
-				display: "flex", 
-				justifyContent: 'flex-end' 
+				sx={{ 
+					margin: "5px",
+					display: "flex", 
+					justifyContent: 'flex-end' 
 			}} 
-				variant="contained" 
-				onClick={handleShowDialog}
-			>	Add training
+					variant="contained" 
+					onClick={handleShowDialog}
+			>		Add training
 			</Button>
 
 			<Dialog
@@ -95,12 +95,13 @@ export default function AddTraining(props) {
 						flexDirection: "column", 
 						gap: "10px", 
 						width: "300px", 
-						paddingTop: "5px" }}
+						paddingTop: "10px",		
+					 }}
 				>
 
-					<LocalizationProvider 
+					<LocalizationProvider
 						dateAdapter={AdapterDayjs}>
-							<DateTimePicker 
+							<DateTimePicker
 								label="Date *"
 								name="date"
 								value={training.date}

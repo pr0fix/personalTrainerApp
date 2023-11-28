@@ -50,7 +50,9 @@ export default function AddCustomer(props) {
     return (
         <>
             <Button 
-           		sx={{ margin: "5px" }} 
+           		sx={{ 
+                    margin: "5px" 
+                }} 
             	variant="contained" 
                 onClick={handleShowDialog}
 			>	Add customer
@@ -95,7 +97,7 @@ export default function AddCustomer(props) {
                         error={validationError && !customer.streetaddress}
                     />
                     <TextField
-                        label="postcode"
+                        label="Postcode"
                         name="postcode"
                         value={customer.postcode}
                         onChange={handleInputChange}
