@@ -34,7 +34,7 @@ export default function Trainingcalendar() {
         // Return an event object with required properties
         return {
             id: training.id,
-            title: training.activity,
+            title: `${training.activity} / ${training.customer.firstname} ${training.customer.lastname}` ,
             start: startDateTime,
             end: endDateTime,
             allDay: false
@@ -44,8 +44,14 @@ export default function Trainingcalendar() {
     // useEffect hook to fetch training data when the component mounts
     useEffect(() => {
         getTrainings();
-    }, [])
+    }, [])    
 
+
+    useEffect(() => {
+        // moment.locale('fi-FI');
+        moment.updateLocale("fi",
+        {week: {dow: 1, doy: 1}});
+    }, []);
 
     // Render the Calendar component with defined properties
     return (
@@ -57,7 +63,7 @@ export default function Trainingcalendar() {
             endAccessor="end"
             defaultView="month"
             views={["month", "week", "day", "agenda"]}
-            style={{ height: 650 }}
+            style={{ height: 650 }}     
         />
         </div>
     );

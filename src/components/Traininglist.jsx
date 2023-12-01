@@ -33,7 +33,6 @@ export default function Trainingpage() {
 	// POST-request to add a new training
 	const addTraining = async (training, customerId) => {
 		try {
-			// const ISODate = moment().toISOString();
 
 			// Link to customer with customer ID defined in input field in AddTraining -component
 			const customerRefLink = `${REST_URL}/api/customers/${customerId}`;
@@ -56,7 +55,6 @@ export default function Trainingpage() {
 			setOpen(true);
 			setMsg("Training added successfully!")
 			getTrainings();
-
 		}
 		catch (err) {
 			console.error(err);
