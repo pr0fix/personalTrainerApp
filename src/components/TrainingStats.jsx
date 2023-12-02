@@ -14,7 +14,6 @@ export default function Trainingstats() {
             const res = await axios.get('https://traineeapp.azurewebsites.net/gettrainings');
             const resData = res.data;
            
-            
             if(resData.length > 0) {
 
                 // Makes groups of activities and saves them to constant named activity
@@ -36,6 +35,7 @@ export default function Trainingstats() {
         }
     }
 
+    // useEffect hook to get training data when the component mounts
     useEffect(() => {
         getData();
     }, [])

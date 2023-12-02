@@ -4,18 +4,18 @@ import { useState } from "react";
 export default function AddCustomer(props) {
 
     // States
-    const [customer, setCustomer] = useState(props.customer);
-    const [showDialog, setShowDialog] = useState(false);
+    const [customer, setCustomer] = useState(props.customer); // Temporarily save customer information received with props
+    const [showDialog, setShowDialog] = useState(false); // State to show and hide Dialog component
 
 
-    // Closes edit-form
+    // Closes edit-form if the click is not a backdrop click i.e. doesn't close when clicking outside of dialog component
     const handleCloseDialog = (_, reason) => {
         if (reason != 'backdropClick') {
             setShowDialog(false);
         }
     }
 
-    // Shows edit-form
+    // Shows edit-form with customer information to be edited
     const handleShowDialog = () => {
         setCustomer(props.customer);
         setShowDialog(true);

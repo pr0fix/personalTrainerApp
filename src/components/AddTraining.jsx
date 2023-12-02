@@ -9,9 +9,9 @@ export default function AddTraining(props) {
 	const REST_URL = 'https://traineeapp.azurewebsites.net/api'; //URL for API calls
 
 	// States
-	const [validationError, setValidationError] = useState(false);
-	const [training, setTraining] = useState({ date: '', duration: '', activity: '', customerId: '' });
-	const [showDialog, setShowDialog] = useState(false);
+	const [validationError, setValidationError] = useState(false); // Boolean state for user input validation
+	const [training, setTraining] = useState({ date: '', duration: '', activity: '', customerId: '' }); // State to store trainings
+	const [showDialog, setShowDialog] = useState(false); // State to show and hide Dialog component
 	const [customers, setCustomers] = useState([]); // State to store customers
 
 	// GET-request to receive all customers
@@ -40,9 +40,7 @@ export default function AddTraining(props) {
 
 	// Saves adding a new training
 	const handleSave = () => {
-		if (
-			// training.date && 
-			training.duration && training.activity && training.customerId) {
+		if ( training.date && training.duration && training.activity && training.customerId) {
 			props.addTraining(training, training.customerId);
 			setShowDialog(false);
 		} else {
@@ -50,6 +48,7 @@ export default function AddTraining(props) {
 		}
 	}
 
+	// Sets the date for training because handleInputChange for some reason didn't work with DateTimePicker
 	const handleInputDate = (date) => {
 		setTraining({...training, date});
 		setValidationError(false);
@@ -61,6 +60,7 @@ export default function AddTraining(props) {
 		setValidationError(false);
 	}
 
+	//useEffect hook to fetch customer data when the component mounts
 	useEffect(() => {
 		fetchCustomers();
 	}, [])

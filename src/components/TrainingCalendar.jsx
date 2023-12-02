@@ -8,7 +8,7 @@ export default function Trainingcalendar() {
 
 
     // States
-    const [trainings, setTrainings] = useState([]);
+    const [trainings, setTrainings] = useState([]); // State to save training information for calendar
 
 
     // GET-request to fetch all trainings data from API

@@ -1,3 +1,2 @@
-1. add comments to code
-2. deploy the application (done but router doesnt work)
-3. add footer component to app.jsx(?)
+1. deploy the application (done but router doesnt work)
+2. add tests

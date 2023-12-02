@@ -13,9 +13,9 @@ export default function Trainingpage() {
 	const REST_URL = 'https://traineeapp.azurewebsites.net'
 
 	// States
-	const [trainings, setTrainings] = useState([]);
-	const [open, setOpen] = useState(false);
-	const [msg, setMsg] = useState("");
+	const [trainings, setTrainings] = useState([]); // State to save training data
+	const [open, setOpen] = useState(false);	// State to show and hide snackbar component
+	const [msg, setMsg] = useState(""); // State to set message shown in snackbar component
 
 	// GET-request to receive all trainings
 	const getTrainings = async () => {
