@@ -6,7 +6,7 @@ import axios from "axios";
 export default function Trainingstats() {
 
     // State to save processed data with duration and activity
-    const [processedData, setProcessedData] = useState([])
+    const [processedData, setProcessedData] = useState([]);
 
     // Fetch all training data and create data for barchart with groupBy and sumBy
     const getData = async () => {

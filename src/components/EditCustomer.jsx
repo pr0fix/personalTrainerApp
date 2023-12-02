@@ -50,7 +50,16 @@ export default function AddCustomer(props) {
                 onClose={handleCloseDialog}
             >
                 <DialogTitle>Edit Customer</DialogTitle>
-                <DialogContent>
+                <DialogContent
+                    sx={{
+                        display:'flex',
+                        flexWrap:'wrap',
+                        flexDirection:'column',
+                        gap:'10px',
+                        width:'400px',
+                        paddingTop:'5px'
+                    }}
+                >
                     <TextField
                         label="First name"
                         name="firstname"
@@ -70,8 +79,8 @@ export default function AddCustomer(props) {
                         onChange={handleInputChange}
                     />
                     <TextField
-                        label="postcode"
-                        name="postcode"
+                        label="Postcode"
+                        name="Postcode"
                         value={customer.postcode}
                         onChange={handleInputChange}
                     />
